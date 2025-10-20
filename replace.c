@@ -52,9 +52,8 @@ int main(int argc, char *argv[]) {
     current_line = NULL;
     size_t max_line_len = MAX_LINE_LEN;
     ssize_t read = -1;
-    
-    read = getline(&current_line, &max_line_len, stdin);
-    if (read != -1) {
+
+    while ((read = getline(&current_line, &max_line_len, stdin)) != -1) {
         // success
         uint32_t len_current_line = 0;
         len_current_line = strlen(current_line);
@@ -112,14 +111,15 @@ int main(int argc, char *argv[]) {
         if (strlen(ptr_start) > 0) {
             strncpy(modified_line_ptr, ptr_start, strlen(ptr_start));
         }
+        printf("%s", modified_line);
 
-    } else {
-        // failed
-        printf("Couldn't read from stdin");
-        return -1;
     }
+    // else {
+    //     // failed
+    //     printf("Couldn't read from stdin");
+    //     return -1;
+    // }
     // if (debug) { print_debug_information(); }
-    printf("%s", modified_line);
     return 0;
 
 }

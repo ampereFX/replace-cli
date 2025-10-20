@@ -7,7 +7,9 @@ outpath=$(echo $out)
 outdir=$(dirname $outpath)
 
 mkdir -p "$outdir"
-gcc replace.c -v --output="$out" > "$compilation_log" 2>&1; echo ""
+# gcc replace.c -v --output="$out" > "$compilation_log" 2>&1; echo ""
+clang -v -g -O0 replace.c -o "$out" > "$compilation_log" 2>&1
+
 if [ $? = "0" ]; then
     echo "Compiled successfully!"
     echo "Won't show compilation log"
@@ -25,4 +27,5 @@ else
     read answer
     if [ "$answer" = y ]; then cat "$compilation_log"; fi
 fi
+echo "--------------"
 

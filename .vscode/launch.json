@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "name": "(lldb) Anfügen",
+        "type": "cppdbg",
+        "request": "attach",
+        "program": "${workspaceFolder}/o/replace",
+        "MIMode": "lldb"
+    },
+    {
+        "name": "(lldb) Starten",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/o/replace",
+        "args": ["-v", "-h", "1te", "2te", "3te", "4te"],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "lldb"
+    },
+    {
+      "name": "Debug replace (LLDB)",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/replace",
+      "args": ["--help"], 
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "build (clang -g -O0)",
+      "env": {},
+      "stopOnEntry": false,
+      "sourceLanguages": ["c", "cpp"],
+      "stdio": null,
+      "initCommands": [
+        "settings set target.x86-disassembly-flavor intel"
+      ],
+      "expressions": "native", 
+    }
+  ]
+}
